@@ -24,7 +24,7 @@
       font-size: 80%;
       display: flex;
       justify-content: space-between;
-      color: $theme;
+      color: var(--theme);
       padding-top: 0.5em;
 
       &__release {

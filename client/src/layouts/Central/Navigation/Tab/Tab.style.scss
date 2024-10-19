@@ -9,21 +9,21 @@
 
   &__label {
     padding-top: 0.25em;
-    background-color: $theme--dark; 
+    background-color: var(--theme-text); 
     padding-right: 0.5rem; 
     padding-left: 0.5rem; 
     border-top-left-radius: 0.2rem; 
     border-top-right-radius: 0.2rem; 
-    color: white;
+    color: var(--theme-white-text);
   }
 
   &__left { 
     border-top: 1.3rem solid transparent;
-    border-right: 0.4rem solid $theme--dark;
+    border-right: 0.4rem solid var(--theme-text);
   }
 
   &__right {
     border-top: 1.3rem solid transparent;
-    border-left: 0.4rem solid $theme--dark;
+    border-left: 0.4rem solid var(--theme-text);
   }
 }

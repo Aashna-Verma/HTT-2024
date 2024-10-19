@@ -9,14 +9,14 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border-color: black;
+    border-color: var(--theme-black-text);
 
     tr {
-      border: solid 2px #e0e0e0;
+      border: solid 2px var(--theme-timetable);
     }
 
     td {
-      border: solid 2px #e0e0e0;
+      border: solid 2px var(--theme-timetable);
       padding: 10px;
       text-align: center;
       height: 10px;
@@ -29,20 +29,21 @@
   }
 
   &__head {
-    background-color: #cccccc;
+    background-color: var(--theme-timetable);
   }
 
   &__cell--event {
-    background-color: #cccccc;
+    background-color: var(--theme-timetable);
   }
 
   &__cell--time {
-    border-bottom: solid 2px #ffffff !important;
+    border-bottom: solid 2px var(--theme-timetable) !important;
   }
 
   &__cell--multiple-events {
-    background-color: rgba($theme--dark, 0.31);
-    color: $theme--dark;
+    background-color: rgba(var(--theme-text), 0.31);
+    color: var(--theme-text);
     font-weight: bold;
   }
 }
+

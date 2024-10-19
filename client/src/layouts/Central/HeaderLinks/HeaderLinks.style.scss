@@ -10,21 +10,21 @@
   a {
     text-decoration: none;
     text-transform: uppercase;
-    color: black;
+    color: var(--theme-black-text);
   }
 
   a:hover {
     text-decoration: underline;
-    color: $theme--dark;
+    color: var(--theme-text);
   }
 
   a:active {
-    color: $theme--dark;
+    color: var(--theme-text);
   }
 
   &__btn {
-    background-color: $theme;
-    color: white;
+    background-color: var(--theme);
+    color: var(--theme-white-text);
     border-radius: 20px;
     display: flex;
     justify-content: center;
