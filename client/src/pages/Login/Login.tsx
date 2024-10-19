@@ -5,16 +5,27 @@ import "./Login.style.scss";
 
 function Login() {
   const [message, setMessage] = useState(null);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
   const { login } = useAccountContext();
 
   const attemptLogin = async () => {
+    console.log(username, password)
     try {
-      const message = await login("admin@email.com", "password");
+      const message = await login(username, password);
       setMessage(message);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  }
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  }
 
   return (
     <Layout>
@@ -34,8 +45,8 @@ function Login() {
           </div>
           {message && <p>{message}</p>}
           <div className="Login__panel__content__input">
-            <input type="text" placeholder="MyCarletonOne username"></input>
-            <input type="password" placeholder="Password"></input>
+            <input type="text" placeholder="MyCarletonOne username" onChange={handleUsernameChange}></input>
+            <input type="password" placeholder="Password" onChange={handlePasswordChange}></input>
           </div>
           <div className="Login__panel__content__checkbox">
             <input type="checkbox"></input>
