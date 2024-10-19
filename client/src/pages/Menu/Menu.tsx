@@ -7,6 +7,7 @@ function Menu() {
   return (
     <Layout title={"Main Menu"}>
       <br />
+      <div className="Cabinets">
       <CabinetSection
         title="Personal Information"
         lineItems={[
@@ -63,28 +64,28 @@ function Menu() {
         lineItems={[
           <span>
             <b>Registration: </b>
-            <Link to="/404">Getting Started</Link>,{" "}
+            <Link to="/404">Getting Started</Link>{" "}
             <Link to="/timetables/build">
               Build Your Timetable/Registration
             </Link>
-            ,<Link to="/timetables">Student Timetables</Link>,
-            <Link to="/404">Display Holds</Link>,
+            <Link to="/timetables">Student Timetables</Link>
+            <Link to="/404">Display Holds</Link>
             <Link to="/404">Registration Override Requests</Link>
           </span>,
           <span>
             Other:
-            <Link to="/404">Add/Drop Classes</Link>,
-            <Link to="/404">French Placement Test</Link>,
-            <Link to="/404">Purchase Books</Link>,
+            <Link to="/404">Add/Drop Classes</Link>
+            <Link to="/404">French Placement Test</Link>
+            <Link to="/404">Purchase Books</Link>
           </span>,
           <span>
             <Link to="/404">
               <b>Student Accounts: </b>
             </Link>
-            ,<Link to="/404">Calculate Amount To Pay</Link>,
-            <Link to="/404">International Currency Payment </Link>,
-            <Link to="/404">Refund Request</Link>,
-            <Link to="/404">Print tax receipts (T2202, RL-8)</Link>,
+            <Link to="/404">Calculate Amount To Pay</Link>
+            <Link to="/404">International Currency Payment </Link>
+            <Link to="/404">Refund Request</Link>
+            <Link to="/404">Print tax receipts (T2202, RL-8)</Link>
           </span>,
         ]}
       />
@@ -129,6 +130,7 @@ function Menu() {
           </span>,
         ]}
       />
+      </div>
     </Layout>
   );
 }

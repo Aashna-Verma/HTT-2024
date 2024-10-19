@@ -1,0 +1,22 @@
+.Cabinets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin: 0 auto;
+
+    gap: 2em;
+}
+
+// a media query for smaller screens
+@media (max-width: 1000px) {
+    .Cabinets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// a media query for even smaller screens
+@media (max-width: 600px) {
+    .Cabinets {
+        grid-template-columns: 1fr;
+    }
+}

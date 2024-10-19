@@ -11,7 +11,7 @@ function CabinetSection({ title, lineItems }: CabinetSectionProps) {
     <div className="CabinetSection">
       <img src="cabinet.gif"></img>
       <div>
-        <div>{title}</div>
+        <div className="title">{title}</div>
         <ul>
           {lineItems.map((item, index) => (
             <li key={index}>{item}</li>
