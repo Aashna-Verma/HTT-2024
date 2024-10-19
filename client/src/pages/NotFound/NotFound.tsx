@@ -1,12 +1,10 @@
-import { Central as Layout } from "@/layouts";
 import "./NotFound.style.scss";
 
 function NotFound() {
-  return (
-    <Layout title={"Page Not Found"}>
-      <h1>404</h1>
-    </Layout>
-  );
+  return <div className="Page Not Found">
+    <div  className="errorpage">
+    <p className="errortext">404 Error</p></div>
+  </div>;
 }
 
 export default NotFound;
