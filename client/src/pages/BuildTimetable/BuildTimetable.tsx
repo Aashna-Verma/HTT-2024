@@ -37,6 +37,10 @@ function BuildTimetable() {
     );
 
     navigate(`/timetables/${result.data.id}`);
+
+    await ServiceAPI.SendDiscordMsg(
+      timeTableName
+    )
   };
 
   const addEvent = (event: ScheduledEvent) => {
