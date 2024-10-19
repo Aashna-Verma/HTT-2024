@@ -1,3 +1,5 @@
+@import "../../../../globals.scss";
+
 .Tab {
   display: flex;
   font-weight: bold;
@@ -6,21 +8,22 @@
   border-radius: 0.5rem;
 
   &__label {
-    background-color: #666666;
-    padding-right: 0.1rem;
-    padding-left: 0.1rem;
-    border-top-left-radius: 0.2rem;
-    border-top-right-radius: 0.2rem;
+    padding-top: 0.25em;
+    background-color: $theme--dark; 
+    padding-right: 0.5rem; 
+    padding-left: 0.5rem; 
+    border-top-left-radius: 0.2rem; 
+    border-top-right-radius: 0.2rem; 
     color: white;
   }
 
-  &__left {
+  &__left { 
     border-top: 1.3rem solid transparent;
-    border-right: 0.4rem solid #666666;
+    border-right: 0.4rem solid $theme--dark;
   }
 
   &__right {
     border-top: 1.3rem solid transparent;
-    border-left: 0.4rem solid #666666;
+    border-left: 0.4rem solid $theme--dark;
   }
 }

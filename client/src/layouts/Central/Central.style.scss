@@ -1,3 +1,5 @@
+@import "../../globals.scss";
+
 .Central {
   &__page {
     height: 100vh;
@@ -13,21 +15,20 @@
     &__title {
       margin-top: 1.67rem;
       margin-bottom: 1.5rem;
-      font-weight: normal;
-      font-size: 1.3em;
+      font-weight: bold;
+      font-size: 1.5em;
     }
 
     &__footer {
       font-weight: bold;
       font-size: 80%;
-      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      color: $theme;
+      padding-top: 0.5em;
 
       &__release {
         text-transform: uppercase;
-      }
-
-      &__copyright {
-        margin-top: 1.67rem;
       }
     }
   }
