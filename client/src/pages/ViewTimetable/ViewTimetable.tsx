@@ -35,7 +35,7 @@ function ViewTimetable() {
   }
 
   return (
-    <Layout title={"Student Timetable"}>
+    <Layout title={timetable.name}>
       <TimetableView
         events={timetable.items.map((item: any) =>
           scheduledEventToCalendarBlock(item),
