@@ -1,12 +1,12 @@
 import jwt from "jsonwebtoken";
 import { Err, Ok, Result } from "ts-results";
 import { AccountService } from "../services";
-import { JWT_SECRET } from "../config/jwt";
+// import { JWT_SECRET } from "../config/jwt";
 
 export const verify = async (
   token: string,
 ): Promise<Result<boolean, Error>> => {
-  const secret = JWT_SECRET as string;
+  const secret = process.env.JWT_SECRET as string;
 
   try {
     const result = jwt.verify(token, secret) as { data: string };
@@ -40,7 +40,7 @@ export const emailFromToken = async (
   }
 
   const tokenWithoutBearerPrefix = token.split(" ")[1];
-  const secret = JWT_SECRET;
+  const secret = process.env.JWT_SECRET;
 
   if (!secret) {
     return Err(new Error("JWT_SECRET not set"));

@@ -1,7 +1,7 @@
 import { Ok, Err, Result } from "ts-results";
 import jwt from "jsonwebtoken";
 import { AccountService } from "../services";
-import { JWT_SECRET } from "../config/jwt";
+// import { JWT_SECRET } from "../config/jwt";
 
 export const login = async (
   email: string,
@@ -17,7 +17,7 @@ export const login = async (
     return Err(new Error("Incorrect password"));
   }
 
-  const secret = JWT_SECRET;
+  const secret = process.env.JWT_SECRET;
 
   if (!secret) {
     return Err(new Error("JWT_SECRET not set"));
