@@ -12,14 +12,14 @@
   justify-content: center;
   align-items: center;
 
-
+color: white;;
   &__panel {
     width: 31.25rem;
     height: fit-content;
-    background: rgba(255, 255, 255, 0.486);
+    background: #ffbdd42a;
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.25 );
-backdrop-filter: blur( 10px );
--webkit-backdrop-filter: blur( 10px );
+backdrop-filter: blur( 15px );
+-webkit-backdrop-filter: blur( 15px );
 border-radius: 20px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 
@@ -31,12 +31,13 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
     &__button {
       border: none;
-      background-color: rgb(38, 114, 236);
+      background-color: #DB7093;
       color: rgb(255, 255, 255);
-      padding: 0.25rem 1.25rem 0.375rem 1.25rem;
+      padding: 0.25rem 1.25rem 0.25rem 1.25rem;
       cursor: pointer;
       font-size: 0.9rem;
       border-radius: 20px;
+      font-weight: bold;
 
       &:hover {
         background: rgb(212, 227, 251);
@@ -51,7 +52,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         font-size: 01.1em;
 
         a {
-          color: #2672ec;
+          color: #ffdfe9;
           text-decoration: none;
           background-color: transparent;
           font-weight: bold;
