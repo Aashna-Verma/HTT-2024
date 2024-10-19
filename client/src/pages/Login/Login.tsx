@@ -18,7 +18,7 @@ function Login() {
 
   return (
     <Layout>
-      <div className="Login"></div>
+      <div className="Login">
       <div className="Login__panel">
         <div className="Login__panel__content">
           <img src="/carleton_logo_black.png"></img>
@@ -48,7 +48,7 @@ function Login() {
             Sign In
           </button>
         </div>
-      </div>
+      </div></div>
     </Layout>
   );
 }
