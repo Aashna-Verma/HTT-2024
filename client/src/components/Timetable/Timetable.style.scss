@@ -9,14 +9,14 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border-color: var(--theme-black-text);
+    border-color: black;
 
     tr {
-      border: solid 2px var(--theme-timetable);
+      border: solid 1px transparent;
     }
 
     td {
-      border: solid 2px var(--theme-timetable);
+      border: solid 1px lavenderblush;
       padding: 10px;
       text-align: center;
       height: 10px;
@@ -29,21 +29,50 @@
   }
 
   &__head {
-    background-color: var(--theme-timetable);
+    color: white;
+
+    th:first-child {
+      background-color: white;
+    }
+
+    th {
+      padding: 0.25em;
+      border-radius: 20px;
+
+      div {
+        background-color: var(--theme);
+        padding: 0.5em;
+        border-radius: 20px;
+      }
+    }
   }
 
   &__cell--event {
-    background-color: var(--theme-timetable);
+    background-color: pink;
+
   }
+  
+  &__cell--event:has(.start) {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    &__cell--event:has(.end) {
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
 
   &__cell--time {
-    border-bottom: solid 2px var(--theme-timetable) !important;
+    border-bottom: solid 2px #ffffff !important;
+    font-weight: bold;
   }
 
   &__cell--multiple-events {
-    background-color: rgba(var(--theme-text), 0.31);
-    color: var(--theme-text);
+    background-color: rgba(var(--theme--dark), 0.31);
+    color: var(--theme--dark);
     font-weight: bold;
   }
-}
 
+  /* Event block rounding */
+  
+}

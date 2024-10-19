@@ -23,11 +23,11 @@ backdrop-filter: blur( 15px );
 border-radius: 20px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 
-
     img {
       max-width: 100%;
       margin-bottom: 3rem;
     }
+
 
     &__button {
       border: none;
@@ -38,9 +38,14 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
       font-size: 0.9rem;
       border-radius: 20px;
       font-weight: bold;
+      height: fit-content;
 
       &:hover {
         background: rgb(212, 227, 251);
+
+        .SignInAnimation{
+          transform: translateY(30px);
+        }
       }
     }
 
@@ -82,6 +87,38 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
           margin-right: 0.25rem;
         }
       }
+      .SignInBlock {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .SignInAnimation {
+        opacity: 0%;
+        width: 100px;
+        height: auto;
+        margin-right: 10px;
+        
+        img {
+          margin-bottom: 0 !important;
+        }
+      }
+
+      .Login__panel__button:hover + .SignInAnimation{
+        opacity: 1;
+        animation: gorillaAnimation 3s infinite;
+      }
     }
   }
+}
+
+@keyframes gorillaAnimation {
+    0%{
+      left: 50%;
+      bottom: -60%;
+    }
+
+    100%{
+      left: 10%;
+      transform: translateX(-120px);
+    }
 }

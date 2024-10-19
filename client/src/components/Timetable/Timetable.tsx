@@ -21,13 +21,18 @@ interface TimetableProps {
   events: CalendarBlock[];
 }
 
+function timeStringToMinutes(timeStr: string) {
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
 function Timetable({ events }: TimetableProps) {
   const eventsToDisplay = events.filter(
     (event) =>
       event.startTime !== "" &&
       event.endTime !== "" &&
       event.startTime !== "NA" &&
-      event.endTime !== "NA",
+      event.endTime !== "NA"
   );
 
   return (
@@ -37,33 +42,42 @@ function Timetable({ events }: TimetableProps) {
           <tr className="Timetable__head">
             <th></th>
             {Object.values(Days).map((day) => (
-              <th key={day}>{day}</th>
+              <th key={day}>
+                <div>{day}</div>
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {Array.from({ length: 22 }, (_, i) => {
             const hour = 8 + Math.floor(i / 2);
-            const minute = i % 2 === 0 ? "00" : "30";
-            const timeLabel = `${hour}:${minute}`;
+            const minute = i % 2 === 0 ? 0 : 30;
+            const timeLabel = `${hour}:${minute.toString().padStart(2, "0")}`;
+
+            const slotStartTimeInMinutes = hour * 60 + minute;
+            const slotEndTimeInMinutes = slotStartTimeInMinutes + 30;
+
             return (
               <tr key={timeLabel}>
                 <td className={i % 2 === 0 ? "Timetable__cell--time" : ""}>
                   {i % 2 === 0 ? timeLabel : null}
                 </td>
                 {Object.values(Days).map((day) => {
-                  const eventsForCell = eventsToDisplay.filter(
-                    (event) =>
-                      event.days.includes(day) &&
-                      (parseInt(event.startTime.split(":")[0]) < hour ||
-                        (parseInt(event.startTime.split(":")[0]) === hour &&
-                          parseInt(event.startTime.split(":")[1]) <=
-                            parseInt(minute))) &&
-                      (parseInt(event.endTime.split(":")[0]) > hour ||
-                        (parseInt(event.endTime.split(":")[0]) === hour &&
-                          parseInt(event.endTime.split(":")[1]) >
-                            parseInt(minute))),
-                  );
+                  const eventsForCell = eventsToDisplay.filter((event) => {
+                    if (!event.days.includes(day)) {
+                      return false;
+                    }
+                    const eventStartTimeInMinutes = timeStringToMinutes(
+                      event.startTime
+                    );
+                    const eventEndTimeInMinutes = timeStringToMinutes(
+                      event.endTime
+                    );
+                    return (
+                      eventStartTimeInMinutes < slotEndTimeInMinutes &&
+                      eventEndTimeInMinutes > slotStartTimeInMinutes
+                    );
+                  });
 
                   return (
                     <td
@@ -76,11 +90,41 @@ function Timetable({ events }: TimetableProps) {
                           : ""
                       }`}
                     >
-                      {eventsForCell.map((event, index) => (
-                        <div key={index} className="Timetable__event">
-                          <span className="event-label">{event.label}</span>
-                        </div>
-                      ))}
+                      {eventsForCell.map((event, index) => {
+                        const eventStartTimeInMinutes = timeStringToMinutes(
+                          event.startTime
+                        );
+                        const eventEndTimeInMinutes = timeStringToMinutes(
+                          event.endTime
+                        );
+
+                        // Adjusted logic for isStart and isEnd
+                        const isStart =
+                          eventStartTimeInMinutes >= slotStartTimeInMinutes &&
+                          eventStartTimeInMinutes < slotEndTimeInMinutes;
+
+                        const isEnd =
+                          eventEndTimeInMinutes > slotStartTimeInMinutes &&
+                          eventEndTimeInMinutes <= slotEndTimeInMinutes &&
+                          !isStart; // Ensure isEnd is not true if isStart is true in the same slot
+
+                        return (
+                          <div
+                            key={index}
+                            className={`Timetable__event ${
+                              isStart ? "start" : ""
+                            } ${isEnd ? "end" : ""}`}
+                            style={{
+                              borderTopLeftRadius: isStart ? "10px" : "0",
+                              borderTopRightRadius: isStart ? "10px" : "0",
+                              borderBottomLeftRadius: isEnd ? "10px" : "0",
+                              borderBottomRightRadius: isEnd ? "10px" : "0",
+                            }}
+                          >
+                            <span className="event-label">{event.label}</span>
+                          </div>
+                        );
+                      })}
                     </td>
                   );
                 })}
